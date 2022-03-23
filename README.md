@@ -10,4 +10,4 @@
 
 ### Publish
 
-Enable github action in your repo, and when you tagging a new version `vx.x.x` in a git commit and push, it will automatically publish to the github release.
+Enable github action in your repo (in your github repo - setting - action - general) if it is not allowed, and when you tagging a new version `vx.x.x` in a git commit and push, it will automatically publish to the github release.
