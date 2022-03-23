@@ -61,8 +61,9 @@ jobs:
       - uses: tiddly-gittly/tw5-plugin-packer@v0.0.6
         with:
           minify: 'true'
+          # here we read plugin author and name from packageJSON, and packageJSON is read in the step above with id `setPackageJSON`
           source: |
-            'dist/plugins/${{fromJson(steps.set_var.outputs.packageJson).author}}/${{fromJson(steps.set_var.outputs.packageJson).name}}'
+            'dist/plugins/${{fromJson(steps.setPackageJSON.outputs.packageJson).author}}/${{fromJson(steps.setPackageJSON.outputs.packageJson).name}}'
           output: 'dist/out'
           uglifyjs-options: '{ "warnings": false, "ie8": false, "safari10": false }'
           cleancss-options: '{ "compatibility": "*", "level": 2 }'
