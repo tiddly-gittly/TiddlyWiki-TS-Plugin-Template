@@ -37,6 +37,8 @@ function zipDirectory(source, out) {
   });
 }
 
-const outPath = path.join(__dirname, '..', 'plugins.zip');
-await zipDirectory(path.join(__dirname, '..', 'dist'), outPath);
-await fs.move(outPath, path.join(distDir, 'out', 'plugins.zip'));
+if (process.env.CI) {
+  const outPath = path.join(__dirname, '..', 'plugins.zip');
+  await zipDirectory(path.join(__dirname, '..', 'dist'), outPath);
+  await fs.move(outPath, path.join(distDir, 'out', 'plugins.zip'));
+}
