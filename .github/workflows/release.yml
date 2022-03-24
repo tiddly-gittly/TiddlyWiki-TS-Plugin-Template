@@ -58,7 +58,7 @@ jobs:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       # this should be the same as `scripts/run-action.mjs`
-      - uses: tiddly-gittly/tw5-plugin-packer@v0.0.9
+      - uses: tiddly-gittly/tw5-plugin-packer@v0.0.10
         with:
           minify: 'true'
           # here we read plugin author and name from packageJSON, and packageJSON is read in the step above with id `setPackageJSON`
