@@ -4,6 +4,7 @@
 import { RunOptions, RunTarget } from 'github-action-ts-run-api';
 
 const packageJSON = fs.readJsonSync('package.json');
+const pluginTitle = `${packageJSON.author}/${packageJSON.name}`
 
 // RunTarget.preJsScript() and RunTarget.postJsScript() are also available
 const target = RunTarget.mainJs(path.resolve('node_modules/tw5-plugin-packer/action.yml'));
@@ -11,7 +12,7 @@ const options = RunOptions.create()
   .setInputs({
     // no minify in dev mode
     minify: false,
-    source: [`dist/plugins/${packageJSON.author}/${packageJSON.name}`],
+    source: [`dist/plugins/${pluginTitle}`],
     output: 'dist/out',
     'uglifyjs-options': '{ "warnings": false, "ie8": false, "safari10": false }',
     'cleancss-options': '{ "compatibility": "*", "level": 2 }',
