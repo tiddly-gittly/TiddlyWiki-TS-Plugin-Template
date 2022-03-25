@@ -1,10 +1,12 @@
 import archiver from 'archiver';
 
-const packageJSON = fs.readJsonSync('package.json');
+const pluginInfo = fs.readJsonSync('src/plugin.info');
+const [_, __, author, name] = pluginInfo.title.split('/');
+const pluginTitle = `${author}/${name}`;
 
 const repoDir = path.join(__dirname, '..');
 const distDir = path.join(__dirname, '..', 'dist');
-const nodejsPluginOutDir = path.join(distDir, 'plugins', packageJSON.author, packageJSON.name);
+const nodejsPluginOutDir = path.join(distDir, 'plugins', author, name);
 // cross platform cp -r ${repoDir}/src/ ${nodejsPluginOutDir}/
 const copyOptions = {
   filter: (src, dest) => {

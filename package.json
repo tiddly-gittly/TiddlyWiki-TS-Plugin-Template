@@ -1,8 +1,5 @@
 {
-  "author": "linonetwo",
-  "name": "tw-example-plugin",
   "url": "https://github.com/tiddly-gittly/tw-example-plugin",
-  "description": "put your description here, and fill in the author and name and url above, your plugin will be author/name",
   "tsFiles": [
     "index"
   ],

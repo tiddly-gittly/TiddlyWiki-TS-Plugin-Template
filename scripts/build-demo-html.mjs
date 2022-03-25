@@ -3,8 +3,9 @@ import { cd } from "zx";
 /**
  * Put plugin into demo folder
  */
-const packageJSON = fs.readJsonSync('package.json');
-const pluginTitle = `${packageJSON.author}/${packageJSON.name}`;
+ const pluginInfo = fs.readJsonSync('src/plugin.info');
+ const [_, __, author, name] = pluginInfo.title.split('/');
+ const pluginTitle = `${author}/${name}`;
 
 const repoDir = path.resolve(__dirname, '..');
 const distDir = path.join(repoDir, 'dist');

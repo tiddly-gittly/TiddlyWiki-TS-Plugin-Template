@@ -3,8 +3,9 @@
  */
 import { RunOptions, RunTarget } from 'github-action-ts-run-api';
 
-const packageJSON = fs.readJsonSync('package.json');
-const pluginTitle = `${packageJSON.author}/${packageJSON.name}`
+const pluginInfo = fs.readJsonSync('src/plugin.info');
+const [_, __, author, name] = pluginInfo.title.split('/');
+const pluginTitle = `${author}/${name}`;
 
 // RunTarget.preJsScript() and RunTarget.postJsScript() are also available
 const target = RunTarget.mainJs(path.resolve('node_modules/tw5-plugin-packer/action.yml'));
