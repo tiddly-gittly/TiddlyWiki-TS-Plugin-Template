@@ -11,6 +11,19 @@ This template will help you automatically package zipped multiple-file plugin fo
 1. other tid files just put in the src directory, they will be copy to the plugin automatically.
    1. You can use folder to organize the files, like `src/filters/` to place the filter tiddlers, and that structure will be preserved in the nodejs multiple-file plugin
    1. In the JSON plugin, the structure will strictly follow the tiddler title.
+1. update demo site tiddlers in the [demo/](demo/) directory.
+1. update this readme.md
+
+## During development
+
+There are some scripts you can run to boost your development.
+
+After `npm i`:
+
+- `npm run dev-demo` to setup the demo site locally.
+- `npm run dev` to pack the plugin in the `dist/` directory.
+
+## After the plugin is complete
 
 ### Publish
 
@@ -22,7 +35,7 @@ You will get a Github Pages demo site automatically after publish. If it is 404,
 
 Settings - Pages (on left side) - Source - choose `gh-pages` branch
 
-### Examples
+## Examples
 
 - https://github.com/tiddly-gittly/tw-react
 - https://github.com/tiddly-gittly/slate-write
