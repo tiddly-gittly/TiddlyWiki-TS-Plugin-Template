@@ -1,20 +1,20 @@
 import type { Widget as IWidget, IChangedTiddlers } from 'tiddlywiki';
 
-const Widget = require('$:/core/modules/widgets/widget.js').widget as typeof IWidget;
+const Widget = (require('$:/core/modules/widgets/widget.js') as { widget: typeof IWidget }).widget;
 
 export class ExampleWidget extends Widget {
-  constructor(parseTreeNode: any, options: any) {
-    super(parseTreeNode, options);
-  }
+  // constructor(parseTreeNode: any, options: any) {
+  //   super(parseTreeNode, options);
+  // }
 
-  refresh(changedTiddlers: IChangedTiddlers) {
+  refresh(_changedTiddlers: IChangedTiddlers) {
     return false;
   }
 
   /**
    * Lifecycle method: Render this widget into the DOM
    */
-  render(parent: Node, nextSibling: Node) {
+  render(parent: Node, _nextSibling: Node) {
     this.parentDomNode = parent;
     this.execute();
 

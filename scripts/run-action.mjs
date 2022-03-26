@@ -1,3 +1,8 @@
+/* eslint-disable @typescript-eslint/no-unsafe-argument */
+/* eslint-disable @typescript-eslint/restrict-template-expressions */
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
+/* eslint-disable @typescript-eslint/no-unsafe-call */
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
 /**
  * Run github action that packs JSON plugin
  */
@@ -22,4 +27,4 @@ const options = RunOptions.create()
   // By default, RUNNER_TEMP is faked for a run and then deleted. Keep it
   .setFakeFsOptions({ rmFakedTempDirAfterRun: false });
 
-const res = await target.run(options);
+await target.run(options);
