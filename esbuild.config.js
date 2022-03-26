@@ -19,7 +19,7 @@ esbuild
     bundle: true,
     minify: process.env.CI,
     outdir: `./dist/plugins/${author}/${name}`,
-    sourcemap: 'inline',
+    sourcemap: process.env.CI ? false : 'inline',
     format: 'cjs',
     external: ['$:/*'],
     plugins: [
