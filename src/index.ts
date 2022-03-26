@@ -24,4 +24,4 @@ export class ExampleWidget extends Widget {
   }
 }
 
-exports.widget = ExampleWidget;
+export const widget = ExampleWidget;

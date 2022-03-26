@@ -11,8 +11,7 @@ const pluginTitle = `${author}/${name}`;
 const target = RunTarget.mainJs(path.resolve('node_modules/tw5-plugin-packer/action.yml'));
 const options = RunOptions.create()
   .setInputs({
-    // no minify in dev mode
-    minify: false,
+    minify: process.env.CI,
     source: [`dist/plugins/${pluginTitle}`],
     output: 'dist/out',
     'uglifyjs-options': '{ "warnings": false, "ie8": false, "safari10": false }',
