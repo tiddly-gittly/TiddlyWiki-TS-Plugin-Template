@@ -68,7 +68,7 @@ jobs:
           cleancss-options: '{ "compatibility": "*", "level": 2 }'
 
       - name: Make Demo Site
-        run: cd ./scripts && npx zx ./scripts/build-demo-html.mjs
+        run: ls && npx zx ./scripts/build-demo-html.mjs
 
       - name: Create Release
         uses: softprops/action-gh-release@v1
