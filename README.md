@@ -18,10 +18,12 @@ This template will help you automatically package zipped multiple-file plugin fo
 
 There are some scripts you can run to boost your development.
 
-After `npm i`:
+After `npm i --legacy-peer-deps`:
 
 - `npm run dev-demo` to setup the demo site locally. Re-run this command and refresh browser to see changes to local code and tiddlers.
 - `npm run dev` to pack the plugin in the `dist/` directory.
+
+You will need `--legacy-peer-deps` when `npm i` if you are using latest nodejs. This is a bug in npm.
 
 ### Add a second ts file
 
