@@ -18,7 +18,7 @@
     "installType": "typesync"
   },
   "devDependencies": {
-    "@types/archiver": "5.3.0",
+    "@types/archiver": "5.3.1",
     "@types/eslint": "8.4.1",
     "@types/eslint-plugin-prettier": "3.1.0",
     "@types/fs-extra": "9.0.13",
