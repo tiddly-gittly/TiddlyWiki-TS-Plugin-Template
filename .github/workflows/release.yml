@@ -35,6 +35,9 @@ jobs:
           content="${content//'%'/'%25'}"
           content="${content//$'\n'/'%0A'}"
           content="${content//$'\r'/'%0D'}"
+          # here we replace "title": "$:/plugins/linonetwo/tw-example-plugin", to "title": "linonetwo/tw-example-plugin",
+          # so it can be used in tiddly-gittly/tw5-plugin-packer to find output path
+          content="${content//$\:\/plugins\//}"
           # end of optional handling for multi line json
           echo "::set-output name=pluginInfoJSON::$content"
 
@@ -62,7 +65,7 @@ jobs:
         with:
           minify: 'true'
           # here we read plugin author and name from pluginInfoJSON, and pluginInfoJSON is read in the step above with id `setPluginInfoJSON`
-          source: 'dist/plugins/${{fromJson(steps.setPluginInfoJSON.outputs.pluginInfoJSON).author}}/${{fromJson(steps.setPluginInfoJSON.outputs.pluginInfoJSON).name}}'
+          source: 'dist/plugins/${{fromJson(steps.setPluginInfoJSON.outputs.pluginInfoJSON).title}}'
           output: 'dist/out'
           uglifyjs-options: '{ "warnings": false, "ie8": false, "safari10": false }'
           cleancss-options: '{ "compatibility": "*", "level": 2 }'
