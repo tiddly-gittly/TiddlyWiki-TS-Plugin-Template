@@ -2,7 +2,7 @@ import type { Widget as IWidget, IChangedTiddlers } from 'tiddlywiki';
 
 const Widget = (require('$:/core/modules/widgets/widget.js') as { widget: typeof IWidget }).widget;
 
-export class ExampleWidget extends Widget {
+class ExampleWidget extends Widget {
   // constructor(parseTreeNode: any, options: any) {
   //   super(parseTreeNode, options);
   // }
@@ -24,4 +24,6 @@ export class ExampleWidget extends Widget {
   }
 }
 
-export const widget = ExampleWidget;
+const widget = ExampleWidget;
+exports.widget = ExampleWidget;
+exports.ExampleWidget = ExampleWidget;
