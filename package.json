@@ -29,7 +29,7 @@
     "browserslist": "4.20.2",
     "esbuild": "0.14.34",
     "esbuild-plugin-browserslist": "0.4.9",
-    "eslint": "8.12.0",
+    "eslint": "8.13.0",
     "eslint-config-prettier": "8.5.0",
     "eslint-config-standard": "16.0.3",
     "eslint-config-standard-with-typescript": "21.0.1",
