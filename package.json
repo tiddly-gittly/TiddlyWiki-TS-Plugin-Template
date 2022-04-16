@@ -25,7 +25,7 @@
     "@types/prettier": "2.6.0",
     "@typescript-eslint/eslint-plugin": "5.19.0",
     "@typescript-eslint/parser": "5.19.0",
-    "archiver": "5.3.0",
+    "archiver": "5.3.1",
     "browserslist": "4.20.2",
     "esbuild": "0.14.36",
     "esbuild-plugin-browserslist": "0.4.9",
