@@ -2,17 +2,19 @@
 
 This template will help you automatically package zipped multiple-file plugin for nodejs wiki, and single file JSON plugin for HTML wiki.
 
+You can also try [Modern.TiddlyDev](https://github.com/tiddly-gittly/Modern.TiddlyDev).
+
 ## What need to change after apply the template
 
 ### Basic
 
 1. update `title`, `author` and `description` in the [src/plugin.info](src/plugin.info), update `url` field in the [package.json](package.json).
-1. write your plugin code in the [src/](src/) directory, use `index.ts` as your ts code's entry point.
-1. other tid files just put in the src directory, they will be copy to the plugin automatically.
+2. write your plugin code in the [src/](src/) directory, use `index.ts` as your ts code's entry point.
+3. other tid files just put in the src directory, they will be copy to the plugin automatically.
    1. You can use folder to organize the files, like `src/filters/` to place the filter tiddlers, and that structure will be preserved in the nodejs multiple-file plugin
-   1. In the JSON plugin, the structure will strictly follow the tiddler title.
-1. update demo site tiddlers in the [demo/](demo/) directory.
-1. update this readme.md
+   2. In the JSON plugin, the structure will strictly follow the tiddler title.
+4. update demo site tiddlers in the [demo/](demo/) directory.
+5. update this readme.md
 
 ## During development
 
