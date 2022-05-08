@@ -17,7 +17,7 @@ module.exports = {
     },
     'import/resolver': {
       node: {
-        extensions: ['.js', '.jsx', '.ts', '.tsx'],
+        extensions: ['.js', '.jsx', '.ts', '.tsx', '.mjs'],
       },
       typescript: {
         alwaysTryTypes: true,
@@ -27,12 +27,12 @@ module.exports = {
           ['@', './src'],
           ['@services', './src/services'],
         ],
-        extensions: ['.js', '.jsx', '.ts', '.tsx'],
+        extensions: ['.js', '.jsx', '.ts', '.tsx', '.mjs'],
       },
     },
   },
   rules: {
-    'no-use-before-define': ['error', { ignoreTypeReferences: true, functions: false }],
+    // 'no-use-before-define': ['error', { ignoreTypeReferences: true, functions: false }],
     'unicorn/prevent-abbreviations': [
       'error',
       {
@@ -85,8 +85,6 @@ module.exports = {
     'unicorn/prefer-ternary': 'off',
     '@typescript-eslint/no-non-null-assertion': 'off',
     '@typescript-eslint/no-var-requires': 'off',
-    '@typescript-eslint/explicit-function-return-type': 'off',
-    'unicorn/prefer-dom-node-append': 'off',
     semi: [0],
     '@typescript-eslint/no-use-before-define': [1],
     '@typescript-eslint/no-unused-vars': [
@@ -128,6 +126,8 @@ module.exports = {
     'react-hooks',
     'security',
     'security-node',
+    'autofix',
+    'unused-imports',
   ],
   env: {
     browser: true,
