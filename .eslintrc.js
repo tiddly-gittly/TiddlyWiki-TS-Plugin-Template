@@ -72,6 +72,9 @@ module.exports = {
     'unicorn/no-array-for-each': 'off',
     'multiline-ternary': 'off',
     'security/detect-object-injection': 'off',
+    'unicorn/prefer-dom-node-append': 'off',
+    'unicorn/prefer-modern-dom-apis': 'off',
+    'unicorn/prefer-add-event-listener': 'off',
     'security/detect-non-literal-fs-filename': 'off',
     'unicorn/filename-case': [
       0,
