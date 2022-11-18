@@ -9,7 +9,7 @@
   "files": [],
   "scripts": {
     "test": "NODE_OPTIONS=--experimental-vm-modules jest --config=jest.config.js",
-    "dev": "npm run clean && node scripts/dev/dev.mjs",
+    "dev": "npm run clean && node scripts/dev/development.mjs",
     "make": "npm run clean && npm run build",
     "dev-html": "npm run make && npm run run-action && zx ./scripts/build-demo-html.mjs && cd ./dist/output && serve .",
     "clean": "rimraf dist",

@@ -1,3 +1,10 @@
+/* eslint-disable unicorn/prevent-abbreviations */
+/* eslint-disable @typescript-eslint/no-unsafe-return */
+/* eslint-disable @typescript-eslint/no-unsafe-argument */
+/* eslint-disable @typescript-eslint/restrict-template-expressions */
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
+/* eslint-disable @typescript-eslint/no-unsafe-call */
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
 import path from 'path';
 import fs from 'fs-extra';
 import esbuild from 'esbuild';
@@ -11,7 +18,7 @@ const SOURCE_DIRECTORY = 'src';
 const DISTNATION_DIRECTORY = 'dist';
 const WIKI_DIRECTORY = 'demo';
 const WIKI_TIDDLERS_DIRECTORY = `${WIKI_DIRECTORY}/tiddlers`;
-const ENTRANCE_EXT_LIST = ['.ts', '.tsx', '.jsx', '.mjs'];
+const ENTRANCE_EXT_LIST = new Set(['.ts', '.tsx', '.jsx', '.mjs']);
 const pluginInfo = fs.readJsonSync('src/plugin.info');
 const [_, __, author, name] = pluginInfo.title.split('/');
 const pluginTitle = `${author}/${name}`;
@@ -29,27 +36,27 @@ export const cleanDist = async () => {
 };
 
 export const findAllEntries = async (previousEntryList) => {
-  previousEntryList = previousEntryList ? previousEntryList : [];
+  previousEntryList = previousEntryList || [];
   let entryChanged = false;
   const entryList = [];
   const outputMetaMap = {};
   await walkFilesAsync(SOURCE_DIRECTORY, (dir) => {
-    const metaDir = `${dir.replace(path.extname(dir), '.js')}.meta`;
+    const metaDirectory = `${dir.replace(path.extname(dir), '.js')}.meta`;
     const dirInfo = path.parse(dir);
-    if (ENTRANCE_EXT_LIST.indexOf(path.extname(dir).toLowerCase()) !== -1) {
-      if (fs.existsSync(metaDir)) {
+    if (ENTRANCE_EXT_LIST.has(path.extname(dir).toLowerCase())) {
+      if (fs.existsSync(metaDirectory)) {
         entryList.push(dir);
-        if (!entryChanged && previousEntryList.indexOf(dir) === -1) entryChanged = true;
-        outputMetaMap[`${path.join(dirInfo.dir, dirInfo.name)}.js`] = fs.readFileSync(metaDir).toString('utf-8');
+        if (!entryChanged && !previousEntryList.includes(dir)) entryChanged = true;
+        outputMetaMap[`${path.join(dirInfo.dir, dirInfo.name)}.js`] = fs.readFileSync(metaDirectory).toString('utf8');
       }
     } else if (dir.endsWith('.css.meta')) {
-      outputMetaMap[path.join(dirInfo.dir, dirInfo.name)] = fs.readFileSync(metaDir.replace('.js', '')).toString('utf-8');
+      outputMetaMap[path.join(dirInfo.dir, dirInfo.name)] = fs.readFileSync(metaDirectory.replace('.js', '')).toString('utf8');
     }
   });
   if (!entryChanged) {
-    const len = previousEntryList.length;
-    for (let i = 0; i < len; i++) {
-      if (entryList.indexOf(previousEntryList[i]) !== -1) continue;
+    const length_ = previousEntryList.length;
+    for (let index = 0; index < length_; index++) {
+      if (entryList.includes(previousEntryList[index])) continue;
       entryChanged = true;
       break;
     }
@@ -97,11 +104,11 @@ export const buildEntries = async (entries, metaMap) => {
 //     'Object.assign(exports, __toCommonJS(demo_exports))',
 //   )
 
-export const initTiddlyWiki = async (_$tw, args) => {
+export const initTiddlyWiki = async (_$tw, arguments_) => {
   // copy demo
   await fs.copy(path.join(process.cwd(), 'demo'), DISTNATION_DIRECTORY);
   const $tw = tw.TiddlyWiki(_$tw);
-  $tw.boot.argv = args ? args : [DISTNATION_DIRECTORY];
+  $tw.boot.argv = arguments_ || [DISTNATION_DIRECTORY];
   $tw.boot.boot();
   return $tw;
 };
@@ -113,16 +120,16 @@ const cleanCSS = new CleanCSS({
 
 const excludeFiles = /^.*\.(tsx?|jsx|meta|swp|mjs)$|^\.(git|hg|lock-wscript|svn|DS_Store|(wafpickle-|_).*)$|^CVS$|^npm-debug\.log$/;
 
-export const exportPlugins = ($tw, minify, exportToDist, exportToWiki) => {
+export const exportPlugins = ($tw, minify, exportToDistribution, exportToWiki) => {
   if (fs.existsSync(SOURCE_DIRECTORY)) {
     // Ignore ts, tsx, jsm and jsx
-    if (exportToDist) fs.mkdirsSync(DISTNATION_DIRECTORY);
-    const dir = SOURCE_DIRECTORY;
-    const dirStat = fs.statSync(dir);
-    if (!dirStat.isDirectory()) return;
-    const pluginInfo = $tw.loadPluginFolder(dir, excludeFiles);
+    if (exportToDistribution) fs.mkdirsSync(DISTNATION_DIRECTORY);
+    const directory = SOURCE_DIRECTORY;
+    const directoryStat = fs.statSync(directory);
+    if (!directoryStat.isDirectory()) return;
+    const pluginInfo = $tw.loadPluginFolder(directory, excludeFiles);
     const pluginTiddlerName = `${path.basename($tw.utils.generateTiddlerFilepath(pluginInfo.title, {}))}.json`;
     if (exportToWiki) fs.writeJSONSync(path.join(WIKI_TIDDLERS_DIRECTORY, `${pluginTiddlerName}.dist.json`), pluginInfo);
-    if (exportToDist) fs.writeJSONSync(path.join('dist', 'tiddlers', pluginTiddlerName), pluginInfo);
+    if (exportToDistribution) fs.writeJSONSync(path.join('dist', 'tiddlers', pluginTiddlerName), pluginInfo);
   }
 };
