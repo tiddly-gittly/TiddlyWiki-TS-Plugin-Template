@@ -15,8 +15,8 @@ import { findAllEntries, buildEntries, exportPlugins, initTiddlyWiki } from './p
 const packageJSON = fs.readJsonSync('package.json');
 
 // WebSocket with TiddlyWiki on broswer
-const developmentWebListnerScriptPath = path.resolve(path.join(process.cwd(), 'scripts', 'dev', 'devweb-listener.js'));
-const developmentWebListnerScript = fs.readFileSync(developmentWebListnerScriptPath).toString('utf8');
+const developmentWebListenerScriptPath = path.resolve(path.join(process.cwd(), 'scripts', 'dev', 'devweb-listener.js'));
+const developmentWebListenerScript = fs.readFileSync(developmentWebListenerScriptPath).toString('utf8');
 const wssPort = await getPort({ port: 8081 });
 const refreshHeartBeat = (ws) => {
   ws.isAlive = true;
@@ -77,7 +77,7 @@ const refresh = async () => {
   $tw2.preloadTiddler({ title: '$:/Modern.TiddlyDev/devWebsocket/port', text: `${wssPort}` });
   $tw2.preloadTiddler({
     title: '$:/Modern.TiddlyDev/devWebsocket/listener',
-    text: developmentWebListnerScript,
+    text: developmentWebListenerScript,
     type: 'application/javascript',
     'module-type': 'startup',
   });

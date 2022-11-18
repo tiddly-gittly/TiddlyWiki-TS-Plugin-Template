@@ -4,7 +4,7 @@
   'use strict';
 
   // Export name and synchronous status
-  exports.name = 'devweb-listner';
+  exports.name = 'devweb-Listener';
   exports.platforms = ['browser'];
   exports.after = ['load-modules'];
   exports.synchronous = true;
