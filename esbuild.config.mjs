@@ -17,7 +17,9 @@ const packageJSON = readJsonSync('package.json');
 
 const result = await esbuild.build({
   write: false,
-  entryPoints: packageJSON.tsFiles.map((tsFileName) => `./src/${tsFileName}.ts`),
+  entryPoints: packageJSON.tsFiles.map((tsFileName) =>
+    path.resolve(__dirname, 'src', `${tsFileName.replace('./src/', '').replace('src/', '').replace('.ts', '')}.ts`),
+  ),
   bundle: true,
   // let tiddly-gittly/tw5-plugin-packer minify it, and let our fix of `module exports` works
   minify: false,
