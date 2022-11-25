@@ -74,6 +74,7 @@ module.exports = {
     'security/detect-object-injection': 'off',
     'unicorn/prefer-dom-node-append': 'off',
     'unicorn/prefer-modern-dom-apis': 'off',
+    '@typescript-eslint/explicit-function-return-type': 'off',
     'unicorn/prefer-add-event-listener': 'off',
     'security/detect-non-literal-fs-filename': 'off',
     'unicorn/filename-case': [
