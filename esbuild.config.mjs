@@ -24,6 +24,7 @@ const result = await esbuild.build({
   // let tiddly-gittly/tw5-plugin-packer minify it, and let our fix of `module exports` works
   minify: false,
   outdir: `./dist/plugins/${author}/${name}`,
+  outbase: 'src',
   sourcemap: process.env.CI ? false : 'inline',
   format: 'cjs',
   platform: 'browser',

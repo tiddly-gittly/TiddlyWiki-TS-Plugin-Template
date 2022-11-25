@@ -11,7 +11,7 @@ You can also try [Modern.TiddlyDev](https://github.com/tiddly-gittly/Modern.Tidd
 1. update `title`, `author` and `description` in the [src/plugin.info](src/plugin.info), update `url` field in the [package.json](package.json).
 2. write your plugin code in the [src/](src/) directory, use `index.ts` as your ts code's entry point.
 3. you can use other file name or path, just update the "tsFiles" field in the package.json
-4. write `.js.meta` file in the `src` folder for each ts file. It has to be in `src` because in compiled `dist` folder, ts file will become `js` file and being placed in the `src`
+4. write `.js.meta` file aloneside with your ts file (that listed in the "tsFiles" field in the package.json), because when bundled as a plugin, all ts (in "tsFiles" field) will become js.
 5. other tid files just put in the src directory, they will be copy to the plugin automatically.
    1. You can use folder to organize the files, like `src/filters/` to place the filter tiddlers, and that structure will be preserved in the nodejs multiple-file plugin
    2. In the JSON plugin, the structure will strictly follow the tiddler title.
