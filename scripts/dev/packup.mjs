@@ -22,6 +22,7 @@ const ENTRANCE_EXT_LIST = new Set(['.ts', '.tsx', '.jsx', '.mjs']);
 const pluginInfo = fs.readJsonSync('src/plugin.info');
 const [_, __, author, name] = pluginInfo.title.split('/');
 const pluginTitle = `${author}/${name}`;
+const DIST_PLUGIN_DIRECTORY = path.join(DISTNATION_DIRECTORY, 'plugins', pluginTitle);
 
 export const cleanDist = async () => {
   const distJsTiddler = /^.*\.js\.dist\.tid$/;
@@ -121,10 +122,10 @@ const cleanCSS = new CleanCSS({
 const excludeFiles = /^.*\.(tsx?|jsx|meta|swp|mjs)$|^\.(git|hg|lock-wscript|svn|DS_Store|(wafpickle-|_).*)$|^CVS$|^npm-debug\.log$/;
 
 export const exportPlugins = ($tw, minify, exportToDistribution, exportToWiki) => {
-  if (fs.existsSync(SOURCE_DIRECTORY)) {
+  if (fs.existsSync(DIST_PLUGIN_DIRECTORY)) {
     // Ignore ts, tsx, jsm and jsx
     if (exportToDistribution) fs.mkdirsSync(DISTNATION_DIRECTORY);
-    const directory = SOURCE_DIRECTORY;
+    const directory = DIST_PLUGIN_DIRECTORY;
     const directoryStat = fs.statSync(directory);
     if (!directoryStat.isDirectory()) return;
     const pluginInfo = $tw.loadPluginFolder(directory, excludeFiles);
