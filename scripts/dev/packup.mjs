@@ -13,6 +13,7 @@ import { esbuildPluginBrowserslist } from 'esbuild-plugin-browserslist';
 import tw from 'tiddlywiki';
 import CleanCSS from 'clean-css';
 import { walkFilesAsync } from './utils.mjs';
+import { config } from '../esbuild.config.mjs';
 
 const SOURCE_DIRECTORY = 'src';
 const DISTNATION_DIRECTORY = 'dist';
@@ -68,23 +69,9 @@ export const findAllEntries = async (previousEntryList) => {
 export const buildEntries = async (entries, metaMap) => {
   // Build .ts, .tsx, .jsx to .js.dist.tid
   const buildResult = await esbuild.build({
+    ...config,
     entryPoints: entries,
-    bundle: true,
-    minify: false,
-    write: false,
     incremental: true,
-    outdir: DISTNATION_DIRECTORY,
-    sourcemap: false,
-    format: 'cjs',
-    treeShaking: true,
-    platform: 'browser',
-    external: ['$:/*', 'react', 'react-dom'],
-    plugins: [
-      // http://browserl.ist/?q=%3E0.25%25%2C+not+ie+11%2C+not+op_mini+all
-      esbuildPluginBrowserslist(browserslist(['last 2 versions']), {
-        printUnknownTargets: false,
-      }),
-    ],
   });
   buildResult.outputFiles.forEach((out) => {
     const outName = path.basename(out.path);
