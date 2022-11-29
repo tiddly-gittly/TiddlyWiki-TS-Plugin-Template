@@ -25,8 +25,8 @@ There are some scripts you can run to boost your development.
 
 After `npm i --legacy-peer-deps`:
 
-- `npm run dev-demo` to setup the demo site locally. Re-run this command and refresh browser to see changes to local code and tiddlers.
-- `npm run dev` to pack the plugin in the `dist/` directory.
+- `npm run dev` to pack the plugin in the `dist/` directory, this will setup a site that will auto reload when you have changes. But this is development mode, will produce a much larget bundle than the final version, so only for dev.
+- `npm run dev-html` to setup the demo site locally. Re-run this command and refresh browser to see changes. In this way you can see the real bundle size same as your user will get.
 
 You will need `--legacy-peer-deps` when `npm i` if you are using latest nodejs. This is a bug in npm.
 

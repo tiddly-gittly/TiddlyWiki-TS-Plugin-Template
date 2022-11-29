@@ -9,10 +9,10 @@
   "types": "",
   "files": [],
   "scripts": {
+    "dev": "cross-env NODE_ENV=development npm run make && zx scripts/dev/development.mjs",
     "test": "NODE_OPTIONS=--experimental-vm-modules jest --config=jest.config.js",
-    "dev": "npm run make && zx scripts/dev/development.mjs",
+    "dev-html": "cross-env CI=true NODE_ENV=production npm run make && npm run run-action && zx ./scripts/build-demo-html.mjs && cd ./dist/output && serve .",
     "make": "npm run clean && npm run build",
-    "dev-html": "cross-env CI=true npm run make && npm run run-action && zx ./scripts/build-demo-html.mjs && cd ./dist/output && serve .",
     "clean": "rimraf dist",
     "build": "zx scripts/build.mjs && zx scripts/after-build.mjs",
     "run-action": "zx scripts/run-action.mjs",
