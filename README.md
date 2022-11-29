@@ -15,6 +15,7 @@ You can also try [Modern.TiddlyDev](https://github.com/tiddly-gittly/Modern.Tidd
 5. other tid files just put in the src directory, they will be copy to the plugin automatically.
    1. You can use folder to organize the files, like `src/filters/` to place the filter tiddlers, and that structure will be preserved in the nodejs multiple-file plugin
    2. In the JSON plugin, the structure will strictly follow the tiddler title.
+   3. `ignoredExtensionsWhenBuildPlugin` field in package.json are file extensions that should not be copied to the dist. Normally they will be bundled by esbuild.
 6. update demo site tiddlers in the [demo/](demo/) directory.
 7. update this readme.md
 
