@@ -3,7 +3,7 @@ import type { Widget as IWidget, IChangedTiddlers } from 'tiddlywiki';
 const Widget = (require('$:/core/modules/widgets/widget.js') as { widget: typeof IWidget }).widget;
 
 class ExampleWidget extends Widget {
-  // constructor(parseTreeNode: any, options: any) {
+  // constructor(parseTreeNode: IParseTreeNode, options?: unknown) {
   //   super(parseTreeNode, options);
   // }
 
@@ -16,6 +16,7 @@ class ExampleWidget extends Widget {
    */
   render(parent: Node, _nextSibling: Node): void {
     this.parentDomNode = parent;
+    this.computeAttributes();
     this.execute();
 
     const containerElement = document.createElement('div');
