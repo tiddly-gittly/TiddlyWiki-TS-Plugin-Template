@@ -22,8 +22,8 @@ const ENTRANCE_EXT_LIST = new Set(['.ts', '.tsx', '.jsx', '.mjs']);
 const pluginInfo = fs.readJsonSync('src/plugin.info');
 const [_, __, author, name] = pluginInfo.title.split('/');
 const pluginTitle = `${author}/${name}`;
-const DIST_PLUGIN_DIRECTORY = path.join(DISTNATION_DIRECTORY, 'plugins', pluginTitle);
 const SRC_PLUGIN_DIRECTORY = path.join(SOURCE_DIRECTORY, 'plugins', pluginTitle);
+const DIST_PLUGIN_DIRECTORY = path.join(DISTNATION_DIRECTORY, `${pluginInfo["plugin-type"]}s`, pluginTitle);
 
 export const cleanDist = async () => {
   const distJsTiddler = /^.*\.js\.dist\.tid$/;
@@ -106,7 +106,7 @@ const ignoredExtString =
     ? `|${packageJSON.ignoredExtensionsWhenBuildPlugin.map((ext) => ext.replace('.', '')).join('|')}`
     : '';
 // eslint-disable-next-line security/detect-non-literal-regexp, security-node/non-literal-reg-expr
-const excludeFiles = new RegExp(`^.*.(tsx?|jsx|meta|swp|mjs${ignoredExtString})$|^.(git|hg|lock-wscript|svn|DS_Store|(wafpickle-|_).*)$|^CVS$|^npm-debug.log$`);
+const excludeFiles = /^.*\.(tsx?|jsx|meta|swp|mjs)$|^\.(git|hg|lock-wscript|svn|DS_Store|(wafpickle-|_).*)$|^CVS$|^npm-debug\.log$/;
 
 export const exportPlugins = ($tw, minify, exportToDistribution, exportToWiki) => {
   // Ignore ts, tsx, jsm and jsx
