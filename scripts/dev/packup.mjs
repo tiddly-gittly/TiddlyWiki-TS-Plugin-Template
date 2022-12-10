@@ -22,8 +22,8 @@ const ENTRANCE_EXT_LIST = new Set(['.ts', '.tsx', '.jsx', '.mjs']);
 const pluginInfo = fs.readJsonSync('src/plugin.info');
 const [_, __, author, name] = pluginInfo.title.split('/');
 const pluginTitle = `${author}/${name}`;
-const SRC_PLUGIN_DIRECTORY = path.join(SOURCE_DIRECTORY, 'plugins', pluginTitle);
-const DIST_PLUGIN_DIRECTORY = path.join(DISTNATION_DIRECTORY, `${pluginInfo["plugin-type"]}s`, pluginTitle);
+const SRC_PLUGIN_DIRECTORY = path.join(SOURCE_DIRECTORY, `${pluginInfo['plugin-type']}s`, pluginTitle);
+const DIST_PLUGIN_DIRECTORY = path.join(DISTNATION_DIRECTORY, `${pluginInfo['plugin-type']}s`, pluginTitle);
 
 export const cleanDist = async () => {
   const distJsTiddler = /^.*\.js\.dist\.tid$/;
