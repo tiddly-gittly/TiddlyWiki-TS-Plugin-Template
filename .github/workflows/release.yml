@@ -60,7 +60,7 @@ jobs:
             ${{ runner.os }}-node-
 
       - name: Install dependencies
-        run: npm i
+        run: pnpm i
 
       - name: Make Plugins
         run: npm run make
