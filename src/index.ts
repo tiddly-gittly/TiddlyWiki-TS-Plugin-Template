@@ -26,5 +26,5 @@ class ExampleWidget extends Widget {
   }
 }
 
-/* eslint-disable @typescript-eslint/no-unsafe-member-access */
+declare const exports: Record<string, typeof Widget>;
 exports['example-widget'] = ExampleWidget;
