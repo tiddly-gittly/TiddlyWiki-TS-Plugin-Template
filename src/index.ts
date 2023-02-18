@@ -1,6 +1,5 @@
-import type { Widget as IWidget, IChangedTiddlers } from 'tiddlywiki';
-
-const Widget = (require('$:/core/modules/widgets/widget.js') as { widget: typeof IWidget }).widget;
+import type { IChangedTiddlers } from 'tiddlywiki';
+import { widget as Widget } from '$:/core/modules/widgets/widget.js';
 
 class ExampleWidget extends Widget {
   // constructor(parseTreeNode: IParseTreeNode, options?: unknown) {
@@ -14,12 +13,13 @@ class ExampleWidget extends Widget {
   /**
    * Lifecycle method: Render this widget into the DOM
    */
-  render(parent: Node, _nextSibling: Node): void {
+  render(parent: Element, _nextSibling: Element | null): void {
     this.parentDomNode = parent;
     this.computeAttributes();
     this.execute();
 
     const containerElement = document.createElement('div');
+    containerElement.textContent = 'Hello world!';
     this.domNodes.push(containerElement);
     // eslint-disable-next-line unicorn/prefer-dom-node-append
     parent.appendChild(containerElement);
@@ -27,5 +27,4 @@ class ExampleWidget extends Widget {
 }
 
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
-exports.widget = ExampleWidget;
-exports.ExampleWidget = ExampleWidget;
+exports['example-widget'] = ExampleWidget;
