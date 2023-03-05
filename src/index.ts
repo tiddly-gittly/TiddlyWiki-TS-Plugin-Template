@@ -21,7 +21,6 @@ class ExampleWidget extends Widget {
     const containerElement = document.createElement('div');
     containerElement.textContent = 'Hello world!';
     this.domNodes.push(containerElement);
-    // eslint-disable-next-line unicorn/prefer-dom-node-append
     parent.appendChild(containerElement);
   }
 }

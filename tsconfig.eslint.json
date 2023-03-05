@@ -4,6 +4,7 @@
     "noEmit": true
   },
   "include": [
+    "node_modules/tw5-typed/**/*.ts",
     "src/**/*.ts",
     "test/**/*.ts",
     "src/**/*.js",
