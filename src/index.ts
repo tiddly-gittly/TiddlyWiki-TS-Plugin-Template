@@ -1,5 +1,5 @@
-import type { IChangedTiddlers } from 'tiddlywiki';
 import { widget as Widget } from '$:/core/modules/widgets/widget.js';
+import type { IChangedTiddlers } from 'tiddlywiki';
 
 class ExampleWidget extends Widget {
   // constructor(parseTreeNode: IParseTreeNode, options?: unknown) {
