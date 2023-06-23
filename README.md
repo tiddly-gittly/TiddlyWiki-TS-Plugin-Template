@@ -1,5 +1,9 @@
 # Typescript plugin template for TiddlyWiki5
 
+**Use [tiddly-gittly/Modern.TiddlyDev](https://github.com/tiddly-gittly/Modern.TiddlyDev) instead now!**
+
+---
+
 This template will help you automatically package zipped multiple-file plugin for nodejs wiki, and single file JSON plugin for HTML wiki.
 
 You can also try [Modern.TiddlyDev](https://github.com/tiddly-gittly/Modern.TiddlyDev).
